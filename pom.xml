@@ -24,7 +24,7 @@
 	<scm>
 		<connection>scm:git:https://github.com/xujlibs/jtidy5</connection>
 		<developerConnection>scm:git:https://github.com/xujlibs/jtidy5.git</developerConnection>
-		<url>https://github.com/shuiguang/soapapi-java</url>
+		<url>https://github.com/xujlibs/jtidy5</url>
 		<tag>jtidy5-0.998</tag>
 	</scm>
 
