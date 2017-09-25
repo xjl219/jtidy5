@@ -20,19 +20,25 @@ DOMSource parseDOMSource = tidy.parseDOMSource(new StringReader(document.html())
 1. FileReader reader = new FileReader("simple.xml");
 
 	XpathV3Selector selector = XpathV3Selector.selector(reader);
+	
 	String string = selector.evaluate("//div[@class='texttit_m1']");
+	
 	System.out.println(string);
   
   
   
   	XpathV3Selector selector = XpathV3Selector.selector(new StringReader(domStr));
-		String string = selector.evaluate("//div[@class='texttit_m1']");
-		System.out.println(string);
-    
-    
-    
-    XpathV3Selector selector = XpathV3Selector.selector(new FileInputStream("simple.xml"));
+	
 	String string = selector.evaluate("//div[@class='texttit_m1']");
+		
+	System.out.println(string);
+    
+    
+    
+  	  XpathV3Selector selector = XpathV3Selector.selector(new FileInputStream("simple.xml"));
+	
+	String string = selector.evaluate("//div[@class='texttit_m1']");
+	
 	System.out.println(string);
   
   
