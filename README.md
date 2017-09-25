@@ -40,7 +40,8 @@ DOMSource parseDOMSource = tidy.parseDOMSource(new StringReader(document.html())
 	String string = selector.evaluate("//div[@class='texttit_m1']");
 	
 	System.out.println(string);
-  
+	
+  String clear = XQPCleaner.clear(evaluate, "-//div[@class=\"textimg text-n1\"]","-//strong");
   
   
   
