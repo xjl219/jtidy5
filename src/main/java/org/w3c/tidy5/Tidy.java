@@ -64,6 +64,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.Reader;
 import java.io.Serializable;
+import java.io.StringReader;
 import java.io.Writer;
 import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
@@ -159,7 +160,7 @@ public class Tidy implements Serializable {
 
 	private Report report;
 	TagTable tt;
-
+	DOMSource domSource;
 	/**
 	 * Instantiates a new Tidy instance. It's reccomended that a new instance is
 	 * used at each parsing.
@@ -177,22 +178,44 @@ public class Tidy implements Serializable {
 		errout = stderr;
 
 	}
-
+/**
+ * 		tidy.setErrout(Report.NO_OUT);
+		tidy.setXHTML(true);
+		tidy.setShowErrors(0);
+		tidy.setInputEncoding("utf-8");
+		tidy.setOutputEncoding("UTF-8");
+		tidy.setDropEmptyParas(false);
+		tidy.setTrimEmptyElements(false);
+ * @return
+ */
 	public static Tidy me() {
 
 		Tidy tidy = new Tidy();
 		tidy.configuration.showErrors = 0;
 		tidy.configuration.showWarnings = false;
 		tidy.setErrout(Report.NO_OUT);
-		tidy.setXHTML(true);
+		tidy.setXmlOut(true);
+		tidy.setXHTML(false);
 //		tidy.setOnlyErrors(true);
 //		tidy.setShowWarnings(false);
 		tidy.setShowErrors(0);
 		tidy.setInputEncoding("utf-8");
 		tidy.setOutputEncoding("UTF-8");
+		tidy.setDropEmptyParas(false);
+		tidy.setTrimEmptyElements(false);
+		tidy.setXmlTags(true);
 		return tidy;
 	}
-
+	/**
+	 * 		tidy.setErrout(Report.NO_OUT);
+			tidy.setXHTML(true);
+			tidy.setShowErrors(0);
+			tidy.setInputEncoding("utf-8");
+			tidy.setOutputEncoding("UTF-8");
+			tidy.setDropEmptyParas(false);
+			tidy.setTrimEmptyElements(false);
+	 * @return
+	 */
 	public static Tidy me(Reader in) {
 
 		Tidy me = me();
@@ -200,11 +223,68 @@ public class Tidy implements Serializable {
 		return me;
 
 	}
-
+	/**
+	 * 		tidy.setErrout(Report.NO_OUT);
+			tidy.setXHTML(true);
+			tidy.setShowErrors(0);
+			tidy.setInputEncoding("utf-8");
+			tidy.setOutputEncoding("UTF-8");
+			tidy.setDropEmptyParas(false);
+			tidy.setTrimEmptyElements(false);
+	 * @return
+	 */
 	public static Tidy me(InputStream in) {
 		Tidy me = me();
 		me.parseDOMSource(in);
 		return me;
+	}
+	/**
+	 * 		tidy.setErrout(Report.NO_OUT);
+			tidy.setXHTML(true);
+			tidy.setShowErrors(0);
+			tidy.setInputEncoding("utf-8");
+			tidy.setOutputEncoding("UTF-8");
+			tidy.setDropEmptyParas(false);
+			tidy.setTrimEmptyElements(false);
+	 * @return
+	 */
+	public static DOMSource toDOMSource(Reader in) {
+		
+		Tidy me = me();
+		
+		return me.parseDOMSource(in);
+		
+	}
+	/**
+	 * 		tidy.setErrout(Report.NO_OUT);
+			tidy.setXHTML(true);
+			tidy.setShowErrors(0);
+			tidy.setInputEncoding("utf-8");
+			tidy.setOutputEncoding("UTF-8");
+			tidy.setDropEmptyParas(false);
+			tidy.setTrimEmptyElements(false);
+	 * @return
+	 */
+	public static DOMSource toDOMSource(String domStr) {
+		
+		Tidy me = me();
+		
+		return me.parseDOMSource(new StringReader(domStr));
+		
+	}
+	/**
+	 * 		tidy.setErrout(Report.NO_OUT);
+			tidy.setXHTML(true);
+			tidy.setShowErrors(0);
+			tidy.setInputEncoding("utf-8");
+			tidy.setOutputEncoding("UTF-8");
+			tidy.setDropEmptyParas(false);
+			tidy.setTrimEmptyElements(false);
+	 * @return
+	 */
+	public static DOMSource toDOMSource(InputStream in) {
+		Tidy me = me();
+		return me.parseDOMSource(in);
 	}
 
 	
